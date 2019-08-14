@@ -1,0 +1,10 @@
+.idea/*
+*.sw*
+*.o
+*.so
+*.a
+*.log
+tmp/*
+options.yml
+Makefile
+coverage

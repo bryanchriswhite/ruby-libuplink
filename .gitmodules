@@ -1,0 +1,6 @@
+[submodule "libstorj"]
+	path = ext/libstorj
+	url = https://github.com/storj/libstorj
+[submodule "ext/storj"]
+	path = ext/storj
+	url = https://github.com/storj/storj.git
