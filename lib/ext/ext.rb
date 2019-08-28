@@ -26,6 +26,13 @@ module LibUplink
           :string, # api_key
           :pointer # error string double pointer
       ], ProjectRef.by_value)
+
+      attach_function('create_bucket', 'create_bucket', [
+          ProjectRef,
+          :string, # bucket name
+          BucketConfig,
+          :pointer # error string double pointer
+      ], BucketInfo.by_value)
     end
   end
 end

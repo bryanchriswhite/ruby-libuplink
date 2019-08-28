@@ -117,7 +117,7 @@ module LibUplink
                :redundancy_scheme, RedundancyScheme
       end
 
-      class BuckektConfig < FFI::Struct
+      class BucketConfig < FFI::Struct
         layout :path_cipher, :cipher_suite,
                :encryption_parameters, EncryptionParameters,
                :redundancy_scheme, RedundancyScheme
