@@ -13,5 +13,6 @@ module LibUplink
   extend ::LibUplink::Mixins
   extend ::LibUplink::Ext::Storj::Mixins
 
+  require 'errable'
   require 'uplink'
 end
