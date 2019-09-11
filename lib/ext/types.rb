@@ -1,7 +1,6 @@
 module LibUplink
   module Ext
-    # NB: Ruby's ffi doesn't allow assigning to :string' pointer
-    #     types.
+    # NB: Ruby's ffi doesn't allow assigning to :string pointer types.
     #
     #     You can use `FFI::MemoryPointer.from_string` to create a
     #     string pointer from a ruby string. Or use the
@@ -17,6 +16,7 @@ module LibUplink
     module Storj
       extend FFI::Library
 
+      # enums
       enum :cipher_suite, [
           :enc_unspecified, 0,
           :enc_null,
@@ -36,6 +36,7 @@ module LibUplink
           :after
       ]
 
+      # ref types
       class APIKeyRef < FFI::Struct
         layout :_handle, :int64
       end
@@ -64,10 +65,11 @@ module LibUplink
         layout :_handle, :int64
       end
 
-    class EncryptionAccessRef < FFI::Struct
+      class EncryptionAccessRef < FFI::Struct
         layout :_handle, :int64
       end
 
+      # struct types
       class UplinkConfigTLS < FFI::Struct
         layout :skip_peer_ca_whitelist, :bool
 

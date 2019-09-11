@@ -1,0 +1,25 @@
+bridge:
+  proto: https
+#  proto: http
+  port: 443
+#  port: 6382
+  host: api.storj.io
+#  host: 127.0.0.1
+  user: username@example.com
+  pass: password
+
+encrypt:
+  mnemonic: 'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about'
+
+http:
+  user_agent: 'curl/7.52.1'
+  proxy_url:
+  #cainfo_path: #-- leave blank to use curl default CA bundle, see:
+  #                 (https://curl.haxx.se/libcurl/c/CURLOPT_CAINFO.html)
+  low_speed_limit: 30720
+  low_speed_time: 20
+  timeout: 60
+
+log:
+  logger: JSON_LOGGER
+  level: 0

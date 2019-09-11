@@ -5,14 +5,15 @@ module LibUplink
     C_ANALOGUE = ::LibUplink::Ext::Storj::UplinkRef
 
     def initialize(options_path: "", **options)
-      new_err
-
       if !options_path.empty? && File.exists?(options_path)
         options = ::LibUplink.load_yaml_options(options_path).merge options
       end
 
-      uplink_cfg = ::LibUplink::Ext::Storj::UplinkConfig.new(**options[:uplink_config])
-      @ref = ::LibUplink::Ext::Storj.new_uplink(uplink_cfg, @err)
+      uplink_opts = options[:uplink].nil? ? {} : options[:uplink]
+      uplink_cfg = ::LibUplink::Ext::Storj::UplinkConfig.new(uplink_opts)
+
+      # NB: `new_err` initializes `@err`
+      @ref = ::LibUplink::Ext::Storj.new_uplink(uplink_cfg, new_err)
       check_err
 
       # NB: close uplink when instance is garbage collected
@@ -20,7 +21,7 @@ module LibUplink
     end
 
     def open_project(satellite_addr, api_key)
-      Project.new ::LibUplink::Ext::Storj.open_project(@ref, satellite_addr, api_key, @err)
+      Project.new(@ref, satellite_addr, api_key)
     end
   end
 
